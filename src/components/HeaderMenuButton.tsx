@@ -1,7 +1,11 @@
 
 import { useMemoryContext } from '../context/memory-context';
 
-export default function HeaderMenuButton({children}) {
+type HeaderMenuButtonProps = {
+  children: string
+}
+
+export default function HeaderMenuButton({children} : HeaderMenuButtonProps) {
 
     const {dispatch} = useMemoryContext();
 

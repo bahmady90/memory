@@ -6,8 +6,8 @@ type MemoryCardProps = {
   secondCardClicked: null | number,
   id: number,
   src: string,
-  setFirstCardClicked: Dispatch<SetStateAction<null> | number>,
-  setSecondCardClicked: Dispatch<SetStateAction<null> | number>
+  setFirstCardClicked: Dispatch<SetStateAction<number | null>>,
+  setSecondCardClicked: Dispatch<SetStateAction<number | null>>
 }
 
 

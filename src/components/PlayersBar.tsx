@@ -16,7 +16,7 @@ export default function PlayersBar() {
       style={{gridTemplateColumns: gridTemplateColumnsStyle}}
       >
         {players.map((player, index) =>
-             <PlayerCard key={index} id={index + 1}/>
+             <PlayerCard key={index} id={index + 1} player={player}/>
         )}
     </div>
   )

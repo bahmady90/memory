@@ -1,7 +1,18 @@
 import { useEffect } from "react";
+import { ResultArray } from "../functions";
+import { useMemoryContext } from "../context/memory-context";
 
-export function useCardMatching(firstCardClicked, secondCardClicked, 
-    memoryBoard, dispatch, turn, setFirstCardClicked, setSecondCardClicked) {
+  export function useCardMatching(
+  firstCardClicked: number | null,
+  secondCardClicked: number | null,
+  memoryBoard: ResultArray,
+  setFirstCardClicked: React.Dispatch<React.SetStateAction<number | null>>,
+  setSecondCardClicked: React.Dispatch<React.SetStateAction<number | null>> 
+  )
+  {
+
+      const {dispatch, turn} = useMemoryContext()
+
     useEffect(() => {
         if(firstCardClicked && secondCardClicked) {
           const svgOfFirstCardClicked = memoryBoard.reduce((acc, cur) => {
@@ -37,7 +48,10 @@ export function useCardMatching(firstCardClicked, secondCardClicked,
       }, [firstCardClicked, secondCardClicked, dispatch, memoryBoard, turn, setFirstCardClicked, setSecondCardClicked])
 }
 
-export function useMemoryTimer(dispatch, gameState, numPlayers){
+export function useMemoryTimer(){
+
+  const {dispatch, gameState, numPlayers} = useMemoryContext();
+
   useEffect(() => {
     let intervalId : number;
     if(gameState === "active" && numPlayers === 1){

@@ -1,5 +1,5 @@
 
-import { useCardMatching, useMemoryTimer } from "../hooks/useMemory.tsx";
+import { useCardMatching, useMemoryTimer } from "../hooks/useMemory.tsx"
 import { useMemoryContext } from "../context/memory-context";
 import { useEffect, useMemo, useState } from "react";
 import { getMemoryBoard } from "../functions";
@@ -10,15 +10,12 @@ import GameBoard from "./GameBoard";
 import  MemoryCard  from "./MemoryCard.tsx";
 
 
-
-
-
 export default function GameAktive() {
 
-    const {gridSize, dispatch, openedMemoryCards, turn, theme, numPlayers, gameState} = useMemoryContext();
+    const {gridSize, dispatch, openedMemoryCards, theme, numPlayers} = useMemoryContext();
 
-    const [firstCardClicked, setFirstCardClicked] = useState(null);
-    const [secondCardClicked, setSecondCardClicked] = useState(null);
+    const [firstCardClicked, setFirstCardClicked] = useState<number | null>(null);;
+    const [secondCardClicked, setSecondCardClicked] = useState<number | null>(null);
 
     const memoryBoard = useMemo(() => 
       getMemoryBoard(gridSize, theme), 
@@ -26,7 +23,7 @@ export default function GameAktive() {
 
 
    useCardMatching(firstCardClicked, secondCardClicked, 
-    memoryBoard, dispatch, turn, setFirstCardClicked, setSecondCardClicked);
+    memoryBoard, setFirstCardClicked, setSecondCardClicked);
 
     useEffect(() => {
       if(openedMemoryCards.length === (gridSize * 2)){
@@ -34,7 +31,7 @@ export default function GameAktive() {
       }
     },[dispatch, gridSize, openedMemoryCards.length])
 
-    useMemoryTimer(dispatch, gameState, numPlayers);
+    useMemoryTimer();
   
   return (
     <>

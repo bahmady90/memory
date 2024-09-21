@@ -1,13 +1,16 @@
-import { useMemoryContext } from "../context/memory-context"
+import { Player, useMemoryContext } from "../context/memory-context"
 
 type PlayerCardProps = {
-    id: number
+    id: number,
+    player: Player
 }
 
 
-export default function PlayerCard({id} : PlayerCardProps) {
+export default function PlayerCard({id, player} : PlayerCardProps) {
 
   const {players, turn} = useMemoryContext();
+
+  console.log(player)
 
   const currentPlayer = players.filter((player) => player.id === id)
 

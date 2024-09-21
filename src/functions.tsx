@@ -20,7 +20,7 @@ type SvgObject = {
   id: number
 }
 
-type ResultArray = Array<SvgObject>
+export type ResultArray = Array<SvgObject>
 
 export function getMemoryBoard(gridSize: number, theme: "Numbers" | "Icons"){
 
