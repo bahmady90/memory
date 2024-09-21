@@ -11,7 +11,7 @@ export default function Resultdiv() {
 
     const {playersWithHighestScore} = getPlayersWithHighestScore(players);
 
-
+  // renderlogic for the numberofPlayers, the player/s who have won and show the result responsive
   return (
     <div className="grid h-full">
       {numPlayers === 1 ? 

@@ -9,7 +9,8 @@ type GameBoardPprops = {
 export default function GameBoard({children}: GameBoardPprops) {
 
     const {gridSize} = useMemoryContext();
-    
+
+    // Component that renders the memory array in a grid-table depending on the gridSize
   return (
     <div 
         className={`grid lg:gap-[20px] sm:gap-[15px] gap-[10px]`}

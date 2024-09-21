@@ -1,6 +1,7 @@
 import { Players } from "./context/memory-context";
 
-export function checkElementsGreaterTwo(array: ResultArray, element: string){
+// function that returns a false if the element exist already 2 times in the memoryBoardArray and true otherwise to make sure each card is 2 times on the board
+export function checkElementsGreaterTwo(array: ResultArray, element: string): boolean{
   let result = true;
   let counter = 0;
   array.forEach((el) => {
@@ -24,6 +25,8 @@ export type ResultArray = Array<SvgObject>
 
 export function getMemoryBoard(gridSize: number, theme: "Numbers" | "Icons"){
 
+    // boardArrays for the 2 different themes and 2 different gridSizes
+
     const arrayEightTimesEightSvgs = ["airplane.svg", "apple.svg", "banana.svg", "bike.svg", "car.svg", "cat.svg", "cloud.svg", "comb.svg", "dog.svg", "fish.svg", "house.svg", "money.svg", "moon.svg", "muslim.svg", "schnuller.svg", "scissor.svg", "sun.svg", "umbrella.svg"]
 
     const arrayFourTimesFourSvgs = ["airplane.svg", "apple.svg", "banana.svg", "bike.svg", "car.svg", "cat.svg", "cloud.svg", "comb.svg"];
@@ -37,6 +40,7 @@ export function getMemoryBoard(gridSize: number, theme: "Numbers" | "Icons"){
     
     let svgArray : Array<string> = [];
 
+    // conditionally choosing the right Array depending on the players configuration
     if(theme === "Numbers"){
       if(gridSize === 4){
         svgArray = arrayFourNumbers
@@ -56,6 +60,7 @@ export function getMemoryBoard(gridSize: number, theme: "Numbers" | "Icons"){
 
     let id = 1;
 
+    // creating the board with the condition that every card has to be exactly 2 times in the board and the positions should be random every game
     while(result.length < len){
       const randomNumber: number = Math.floor(Math.random() * svgArray.length);
       const randomElement = svgArray[randomNumber]
@@ -74,6 +79,7 @@ export function getMemoryBoard(gridSize: number, theme: "Numbers" | "Icons"){
 
 }
 
+// function that returns an object with an array of the players with the highest score, since there can be a tie
 export function getPlayersWithHighestScore(players: Players){
   const highestScore = players.reduce((acc, curr) => {
     if(curr.score > acc){
@@ -92,6 +98,7 @@ export function getPlayersWithHighestScore(players: Players){
   return {playersWithHighestScore, highestScore}
 }
 
+// formatting the time number in the simgel-player mode
 export function convertSeconds  (time: number): string  {
   const minutes = Math.floor((time % 3600) / 60)  
   const formatedMinutes = Math.floor((time % 3600) / 60) < 10 ? `0${Math.floor((time % 3600) / 60)}` : Math.floor((time % 3600) / 60)

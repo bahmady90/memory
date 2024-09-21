@@ -19,7 +19,8 @@ export type GameState = {
     openedMemoryCards: Array<string>,
     moves: number,
     time: number,
-    modalOpen: boolean
+    modalOpen: boolean,
+    ringAktive: boolean
 }
 
 
@@ -40,7 +41,9 @@ export type Action =
     {type: "NEW_GAME"} |
     {type: "INCEARSE_MOVES"} |
     {type: "INCREASE_TIME"} |
-    {type: "OPEN_CLOSE_MODAL"}
+    {type: "OPEN_CLOSE_MODAL"} |
+    {type: "SET_RING_ON/OFF"}
+
     
 
 
@@ -59,7 +62,8 @@ const initialState : GameState = {
     openedMemoryCards: [],
     moves: 0,
     time: 0,
-    modalOpen: false
+    modalOpen: false,
+    ringAktive: false
 }
 
 export const MemoryContext = createContext<MemoryContextValue | null>(null);
@@ -146,6 +150,11 @@ function memoryReducer(state: GameState, action: Action): GameState{
             return {
                 ...state,
                 modalOpen: !state.modalOpen
+            }
+        case "SET_RING_ON/OFF":
+            return {
+                ...state,
+                ringAktive: !state.ringAktive
             }       
         default:
             return state;
@@ -156,7 +165,7 @@ function memoryReducer(state: GameState, action: Action): GameState{
 export default function MemoryContextProvider({children}: MemoryContextProviderProps){
 
     const [{ theme, numPlayers, gridSize, 
-        gameState, players, turn, openedMemoryCards, moves, time, modalOpen}, dispatch] = useReducer(memoryReducer, initialState);
+        gameState, players, turn, openedMemoryCards, moves, time, modalOpen, ringAktive},  dispatch] = useReducer(memoryReducer, initialState);
 
     const context : MemoryContextValue = {
         theme,
@@ -169,7 +178,8 @@ export default function MemoryContextProvider({children}: MemoryContextProviderP
         dispatch,
         moves,
         time,
-        modalOpen
+        modalOpen,
+        ringAktive
     }
 
     return (

@@ -8,6 +8,7 @@ export default function Header() {
 
   return (
     <>
+    {/* header-component that responsively renders different elements and a different layout depending on the gameState and the screenwidth*/}
     {gameState === "active" ? (
       
         <header className="grid w-4/5 grid-cols-[1fr,auto] mx-[20%] sm:mt-12 mt-4 sm:gap-x-8">

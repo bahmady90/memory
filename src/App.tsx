@@ -15,7 +15,7 @@ function App() {
   
   const {gameState, modalOpen} = useMemoryContext();
 
-
+  // responsive rendering the gap between the main components
   const gapY = "lg:gap-y-[50px] sm:gap-y-[103px] gap-y-[50px]"
 
   return (
@@ -36,11 +36,7 @@ function App() {
               <Resultdiv/>
             </FinishScreenModal>
           }
-          
-          
         </div>
-        
-        
       </main>
       </>
     

@@ -9,6 +9,8 @@ type ModalProps = {
 export default function MenuModal({openModal, closeModal, children}: ModalProps) {
     const ref = useRef<HTMLDialogElement>(null);
 
+
+    // logic that handles when the modal gets closed or opened
     useEffect(() => {
         if(openModal){
             ref.current?.showModal();

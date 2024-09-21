@@ -4,6 +4,8 @@ import Button from "./Button";
 export default function SelectGame() {
 
     const {theme, numPlayers, gridSize, dispatch} = useMemoryContext();
+
+    // renderlogic for the responsive selectscreen. Since these buttons dont have all the same css i didnt want to make just one Button COmponent and fill it with too many props
     
   return (
 

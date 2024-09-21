@@ -5,9 +5,7 @@ export default function SingelPlayerBar() {
 
     const {moves, time} = useMemoryContext();
 
-    
-      
-      const result = convertSeconds(time)
+    const result = convertSeconds(time);
 
   return (
     <div className="flex justify-around gap-x-8">
