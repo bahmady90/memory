@@ -131,6 +131,8 @@ function memoryReducer(state: GameState, action: Action): GameState{
                     return {...player, score: 0}
                 }),
                 openedMemoryCards: [],
+                time: 0,
+                moves: 0,
                 gameState: "active"
             }
         case "NEW_GAME":
