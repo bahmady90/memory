@@ -20,11 +20,11 @@ function App() {
 
   return (
     <>
-      <main className={`${gameState !== "initialising" ? "bg-white" : "bg-[#304859]"} w-screen h-screen lg:pt-16 sm:pt-12 pt-8`}>
+      <main className={`${gameState !== "initialising" ? "bg-white" : "bg-[#304859]"} w-screen min-h-screen lg:pt-16 sm:pt-12 pt-8`}>
           <MenuModal openModal={modalOpen} >
             <MenuDiv/>
           </MenuModal>
-        <div className={`flex items-center ${gapY} gap-y-[45px] w-screen h-screen flex-col`}>
+        <div className={`flex items-center ${gapY} gap-y-[45px] w-screen flex-col`}>
           <Header/>
           {gameState === "initialising" && <SelectGame/>}
           {gameState === "active" && 
